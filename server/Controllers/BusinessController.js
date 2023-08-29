@@ -6,7 +6,7 @@ module.exports = {
         console.log(req.body);
         const business = req.body;
 
-        const filePath = path.join(__dirname, '../Data', 'businessData.json'); // Adjust the path as needed
+        const filePath = path.join(__dirname, '../Data', 'businessData.json');
         let newData = [];
         try {
             if (fs.existsSync(filePath)) {
