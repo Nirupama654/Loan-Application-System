@@ -1,7 +1,10 @@
 const express = require("express");
+const bodyParser = require('body-parser');
 const app = express();
 const cors = require('cors');
 app.use(cors());
+app.use(bodyParser.json()); // Parse JSON body
+app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded body
 
 const balanceSheetRoute = require('./Routes/BalanceSheet');
 const decisionRoute = require('./Routes/Decision');

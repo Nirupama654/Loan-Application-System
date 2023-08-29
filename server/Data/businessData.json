@@ -1,0 +1,20 @@
+[
+  {
+    "id": "1234",
+    "name": "Dummy",
+    "year": "2019",
+    "amount": "200000"
+  },
+  {
+    "id": "2375",
+    "name": "Nirupama Prasad",
+    "year": "2020",
+    "amount": "5000"
+  },
+  {
+    "id": "2374",
+    "name": "Nirupama Prasad",
+    "year": "2020",
+    "amount": "5000"
+  }
+]

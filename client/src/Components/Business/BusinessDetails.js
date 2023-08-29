@@ -32,7 +32,7 @@ const BusinessDetails = () => {
     console.log(obj);
     try {
       const response = await axios.post(`http://localhost:5001/business`, obj); // Change URL as needed
-      console.log("Response from backend:", response.data);
+      console.log("Response from backend:", response.status);
       // Handle the response data here
     } catch (error) {
       console.error("Error sending request:", error);
@@ -40,7 +40,8 @@ const BusinessDetails = () => {
   };
 
   const fetchSheet = async () => {
-    const response = await fetch(`http://localhost:5001/balance_sheet`);
+    const id = 2375;
+    const response = await fetch(`http://localhost:5001/balance_sheet/${id}`);
     const apiData = await response.json();
     console.log("Balance Sheet : ", apiData.data);
   };
