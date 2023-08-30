@@ -106,7 +106,6 @@ const BusinessDetails = () => {
     try {
       const response = await axios.post(`http://localhost:5001/summarise`, obj);
       const apiData = response.data;
-      // console.log("Approved Loan Amount : ", apiData.data);
       const approvedAmount = apiData.data;
       setApprovedLoanAmount(approvedAmount);
       const width = (approvedAmount * 100) / loanAmount;
@@ -230,7 +229,7 @@ const BusinessDetails = () => {
         {progressWidth !== 0 && (
           <>
             <div className="card-header">
-              <h3>Approved Loan Amount</h3>
+              <h3>Approved Loan Amount : {approvedLoanAmount} $</h3>
             </div>
             <div className="progress" style={{ height: "50px" }}>
               <div
@@ -243,7 +242,7 @@ const BusinessDetails = () => {
                 aria-valuemin="0"
                 aria-valuemax="100"
               >
-                {approvedLoanAmount} $
+                {progressWidth} %
               </div>
             </div>
           </>
