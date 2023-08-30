@@ -7,7 +7,7 @@ const Navbar = () => {
     <>
       <nav className="navbar navbar-inverse bg-dark">
         <div className="container-fluid">
-          <div className="navbar-header">
+          <div className="navbar-header p-3">
             <h2 className="navbar-brand text-white">
               Loan Application System
             </h2>

@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min";
 import Navbar from "../Navbar/Navbar";
 import axios from "axios";
 import BalanceSheet from "../BalanceSheet/BalanceSheet";
@@ -11,30 +9,59 @@ const BusinessDetails = () => {
   const [businessEstdYear, setBusinessEstdYear] = useState("");
   const [loanAmount, setLoanAmount] = useState("");
   const [balanceSheet, setBalanceSheet] = useState([]);
-  const [approvedLoanAmount,setApprovedLoanAmount] = useState(0);
-  const [progressWidth,setProgressWidth] = useState(0);
+  const [approvedLoanAmount, setApprovedLoanAmount] = useState(0);
+  const [progressWidth, setProgressWidth] = useState(0);
+  const [isInputInvalid, setIsInputInvalid] = useState(false);
+  const [alert, setAlert] = useState(<></>);
 
   const handleSetBusinessId = (e) => {
     setBusinessId(e.target.value);
+    setIsInputInvalid(false);
+    setAlert(<></>);
   };
   const handleSetBusinessName = (e) => {
     setBusinessName(e.target.value);
+    setIsInputInvalid(false);
+    setAlert(<></>);
   };
   const handleSetBusinessEstdYear = (e) => {
     setBusinessEstdYear(e.target.value);
+    setIsInputInvalid(false);
+    setAlert(<></>);
   };
   const handleSetBusinessLoanAmount = (e) => {
     setLoanAmount(e.target.value);
+    setIsInputInvalid(false);
+    setAlert(<></>);
   };
+
+  function isValidYear(year) {
+    const currentYear = new Date().getFullYear();
+    const earliestYear = 1900; // Adjust as needed
+
+    return year >= earliestYear && year <= currentYear;
+  }
 
   const handleRequestBalanceSheet = async (e) => {
     e.preventDefault();
+    setAlert(<></>);
+    setIsInputInvalid(false);
     if (
       businessId === "" ||
       businessName === "" ||
-      businessEstdYear === "" ||
+      !isValidYear(businessEstdYear) ||
       loanAmount === ""
     ) {
+      setAlert(
+        <div
+          className="alert alert-danger alert-dismissible fade show"
+          role="alert"
+        >
+          <strong>Invalid Information!</strong> &nbsp; Please check in one of the
+          fields below.
+        </div>
+      );
+      setIsInputInvalid(true);
       return;
     }
     const obj = {
@@ -82,9 +109,8 @@ const BusinessDetails = () => {
       // console.log("Approved Loan Amount : ", apiData.data);
       const approvedAmount = apiData.data;
       setApprovedLoanAmount(approvedAmount);
-      const width = (approvedAmount * 100)/loanAmount;
+      const width = (approvedAmount * 100) / loanAmount;
       setProgressWidth(width);
-
     } catch (error) {
       console.error("Error fetching balance sheet:", error);
     }
@@ -93,6 +119,9 @@ const BusinessDetails = () => {
   return (
     <>
       <Navbar />
+        <div className="container my-1">
+        {alert}
+        </div>
       <div className="d-flex justify-content-center align-items-center">
         <div className="container card m-3">
           <form>
@@ -134,7 +163,10 @@ const BusinessDetails = () => {
                 />
               </div>
               <div className="col my-3">
-                <label className="sr-only" htmlFor="inlineFormInputGroupUsername">
+                <label
+                  className="sr-only"
+                  htmlFor="inlineFormInputGroupUsername"
+                >
                   Loan Amount
                 </label>
                 <div className="input-group">
@@ -151,7 +183,10 @@ const BusinessDetails = () => {
                 </div>
               </div>
               <div className="col my-3">
-                <label className="sr-only" htmlFor="inlineFormInputGroupUsername">
+                <label
+                  className="sr-only"
+                  htmlFor="inlineFormInputGroupUsername"
+                >
                   Accounting Provider
                 </label>
                 <select
@@ -169,6 +204,7 @@ const BusinessDetails = () => {
                   type="submit"
                   className="btn btn-primary"
                   onClick={handleRequestBalanceSheet}
+                  disabled = {isInputInvalid}
                 >
                   Request Balance Sheet
                 </button>
@@ -177,38 +213,41 @@ const BusinessDetails = () => {
           </form>
         </div>
       </div>
-      <div className="container card">
-      <BalanceSheet balanceSheet={balanceSheet} />
-        <button
-          className="btn btn-primary my-3"
-          onClick={handleSubmitApplication}
-        >
-          Submit Application
-        </button>
-      </div>
+      {balanceSheet.length !== 0 && (
+        <div className="container card">
+          <BalanceSheet balanceSheet={balanceSheet} />
+          <div className="col-auto my-2">
+            <button
+              className="btn btn-primary"
+              onClick={handleSubmitApplication}
+            >
+              Submit Application
+            </button>
+          </div>
+        </div>
+      )}
       <div className="container my-2">
-
-        {progressWidth !== 0 && <>
-        <div className="card-header">
-          <h3>Approved Loan Amount</h3>
-        </div>
-        <div className="progress" style={{height : '50px'}}>
-          <div
-            className="progress-bar progress-bar-striped bg-success p-3"
-            role="progressbar"
-            style=
-            {{
-            width : `${progressWidth}%`, 
-          }}
-            aria-valuenow={`${progressWidth}`}
-            aria-valuemin="0"
-            aria-valuemax="100"
-          >{approvedLoanAmount} $</div>
-        </div>
-        </>}
-
-
-       
+        {progressWidth !== 0 && (
+          <>
+            <div className="card-header">
+              <h3>Approved Loan Amount</h3>
+            </div>
+            <div className="progress" style={{ height: "50px" }}>
+              <div
+                className="progress-bar progress-bar-striped bg-success p-3"
+                role="progressbar"
+                style={{
+                  width: `${progressWidth}%`,
+                }}
+                aria-valuenow={`${progressWidth}`}
+                aria-valuemin="0"
+                aria-valuemax="100"
+              >
+                {approvedLoanAmount} $
+              </div>
+            </div>
+          </>
+        )}
       </div>
     </>
   );
