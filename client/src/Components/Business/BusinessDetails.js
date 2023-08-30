@@ -46,6 +46,9 @@ const BusinessDetails = () => {
     e.preventDefault();
     setAlert(<></>);
     setIsInputInvalid(false);
+    setProgressWidth(0);
+    setApprovedLoanAmount(0);
+    setBalanceSheet([]);
     if (
       businessId === "" ||
       businessName === "" ||
@@ -123,6 +126,9 @@ const BusinessDetails = () => {
         </div>
       <div className="d-flex justify-content-center align-items-center">
         <div className="container card m-3">
+        <div className="card-header text-center">
+          <h3>Loan Application Details</h3>
+        </div>
           <form>
             <div className="form-row align-items-center">
               <div className="col my-3">
@@ -195,7 +201,8 @@ const BusinessDetails = () => {
                   defaultValue="0"
                 >
                   <option value="0">Select Accounting Provider</option>
-                  <option value="1">Default</option>
+                  <option value="1">Xero</option>
+                  <option value="2">MYOB</option>
                 </select>
               </div>
               <div className="col-auto my-3">
@@ -233,7 +240,7 @@ const BusinessDetails = () => {
             </div>
             <div className="progress" style={{ height: "50px" }}>
               <div
-                className="progress-bar progress-bar-striped bg-success p-3"
+                className={`progress-bar progress-bar-striped ${progressWidth < 50 ? "bg-danger" : "bg-success"} p-3`}
                 role="progressbar"
                 style={{
                   width: `${progressWidth}%`,
