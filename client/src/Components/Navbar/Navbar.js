@@ -8,9 +8,9 @@ const Navbar = () => {
       <nav className="navbar navbar-inverse bg-dark">
         <div className="container-fluid">
           <div className="navbar-header">
-            <p className="navbar-brand text-white">
+            <h2 className="navbar-brand text-white">
               Loan Application System
-            </p>
+            </h2>
           </div>
           
         </div>

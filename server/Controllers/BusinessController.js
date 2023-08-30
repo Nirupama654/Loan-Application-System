@@ -13,13 +13,13 @@ module.exports = {
                 const fileContent = fs.readFileSync(filePath, 'utf-8');
                 const existingData = JSON.parse(fileContent);
 
-                const exists = existingData.some(existingBusiness =>
-                    existingBusiness.id === business.id
-                );
+                // const exists = existingData.some(existingBusiness =>
+                //     existingBusiness.id === business.id
+                // );
 
-                if (exists) {
-                    return res.status(401).json({ message: "Business data already exists!" });
-                }
+                // if (exists) {
+                //     return res.status(401).json({ message: "Business data already exists!" });
+                // }
                 newData = [...existingData, business];
             }
         } catch (error) {
