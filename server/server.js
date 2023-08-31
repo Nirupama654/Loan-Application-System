@@ -11,12 +11,16 @@ const decisionRoute = require('./Routes/Decision');
 const outcomeRoute = require('./Routes/Outcome');
 const businessRoute = require('./Routes/Business');
 const summariseRoute = require('./Routes/Summarise')
+const loginRoute = require('./Routes/Login');
+const registerRoute = require('./Routes/Register');
 
 app.use('/balance_sheet', balanceSheetRoute);
 app.use('/decision',decisionRoute);
 app.use('/outcome',outcomeRoute);
 app.use('/business',businessRoute);
 app.use('/summarise',summariseRoute);
+app.use('/login',loginRoute);
+app.use('/register',registerRoute);
 
 const port = process.env.PORT || 5001;
 app.listen(port, ()=> {
