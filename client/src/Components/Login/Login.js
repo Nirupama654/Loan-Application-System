@@ -35,7 +35,7 @@ const Login = () => {
         const apiData = await response.data;
         console.log("API data : ", apiData);
         handleSetAlert(apiData.message,"success");
-        console.log(login)
+        // console.log(login)
         login(obj);
         navigate('/business');
       }catch(err){
@@ -47,7 +47,7 @@ const Login = () => {
     
   return (
    <>
-   <Navbar/>
+  
     <div className="container my-3 p-3 card">
        <div className="container">
         {alert}
@@ -87,8 +87,8 @@ const Login = () => {
           </div>
         </div>
         <div className="col-auto">
-          <button className="btn btn-secondary mb-3" onClick={handleLogin}>
-            Confirm identity
+          <button className="btn btn-success mb-3" onClick={handleLogin}>
+            Login
           </button>
         </div>
       

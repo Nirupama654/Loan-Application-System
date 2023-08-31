@@ -138,7 +138,7 @@ const BusinessDetails = () => {
 
   return (
     <>
-      <Navbar />
+     
       {isAuthenticated ? (<>
         <div className="container my-1">{alert}</div>
         <div className="d-flex justify-content-center align-items-center">
@@ -249,10 +249,10 @@ const BusinessDetails = () => {
             </div>
           </div>
         )}
-        <div className="container my-2">
           {progressWidth !== 0 && (
+        <div className="container my-3 card p-3">
             <>
-              <div className="card-header">
+              <div className="card-header my-2">
                 <h3>Approved Loan Amount : {approvedLoanAmount} $</h3>
               </div>
               <div className="progress" style={{ height: "50px" }}>
@@ -272,8 +272,8 @@ const BusinessDetails = () => {
                 </div>
               </div>
             </>
-          )}
         </div>
+          )}
       </>) : <Home/>}
     </>
   );

@@ -10,14 +10,10 @@ module.exports = {
     try{
       const { email, password } = req.body;
       const users = JSON.parse(fs.readFileSync(usersFilePath, "utf8"));
-
-      console.log(`users : ${users}`)
   
       const user = users.find(
         (user) => user.email === email && user.password === password
       );
-
-      console.log(`user : ${user}`)
   
       if (!user) {
         return res.status(401).json({ message: "Invalid credentials" });

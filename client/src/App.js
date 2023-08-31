@@ -6,6 +6,7 @@ import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
 import Home from './Components/Home/Home';
 import PrivateRoute from './PrivateRoute';
+import Navbar from './Components/Navbar/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 
@@ -13,6 +14,7 @@ const App = () => {
   return (
     <AuthProvider>
       <Router>
+      <Navbar/>
         <Routes> 
           <Route path="/" element={<Home/>} />
           <Route path="/login" element={<Login/>} />
