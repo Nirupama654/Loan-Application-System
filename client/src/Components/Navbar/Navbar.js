@@ -1,12 +1,14 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../AuthContext";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const { logout, isAuthenticated } = useAuth();
+  const { user,logout, isAuthenticated } = useAuth();
+
+  console.log(user)
 
   const handleLogout = () => {
     logout(); // Clear user state
@@ -18,11 +20,24 @@ const Navbar = () => {
       <nav className="navbar navbar-inverse bg-dark">
         <div className="container-fluid">
           <div className="navbar-header p-3">
-            <h2 className="navbar-brand text-white">Loan Application System</h2>
+            <h2 className="navbar-brand text-white">
+              <Link to="/" 
+              style={{
+                textDecoration : "none",
+                color : "white"
+              }}
+              >Loan Application System</Link>
+            </h2>
           </div>
-         { isAuthenticated && <button className="btn btn-secondary" onClick={handleLogout}>
-            Logout
-          </button>}
+         { isAuthenticated ?
+         <div className="text-white">Welcome, {user.email} | 
+         <span onClick={handleLogout} style={{cursor : "pointer", marginLeft : "4px"}}>
+          Logout
+       </span>
+         </div>
+         : 
+         <Link to='/login' className="text-white mx-2">Login</Link>
+         }
         </div>
       </nav>
     </>

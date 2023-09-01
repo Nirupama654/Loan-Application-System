@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Navbar from "../Navbar/Navbar";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../AuthContext';
 
 const Login = () => {
@@ -91,8 +91,12 @@ const Login = () => {
             Login
           </button>
         </div>
-      
     </div>
+      <div className="container">
+      <Link to='/register' style={{
+        textDecoration : "none"
+      }}>New user? Register here.</Link>
+      </div>
    </>
   );
 };

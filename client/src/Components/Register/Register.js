@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import Navbar from "../Navbar/Navbar";
 
 const Register = () => {
@@ -85,7 +85,14 @@ const Register = () => {
             }}
           />
         </div>
-        <div className="p-2 text-secondary">Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one digit</div>
+        <div className="p-2 text-secondary">Password must be at least 8 characters long and contain at least
+        <ul>
+          <li>One uppercase letter</li>
+          <li>One lowercase letter</li>
+          <li>One digit</li>
+          <li>One special character i.e. !,@,#,$,%,^,&,*</li>
+        </ul>
+        </div>
       </div>
       <div className="col-auto">
         <button className="btn btn-success mb-3" onClick={handleRegister}>
@@ -93,6 +100,11 @@ const Register = () => {
         </button>
       </div>
     </div>
+    <div className="container">
+      <Link to='/login' style={{
+        textDecoration : "none"
+      }}>Already registered ? Login here.</Link>
+      </div>
    </>
   );
 };

@@ -23,23 +23,23 @@
             {
                 "year": 2022,
                 "month": 9,
-                "profitOrLoss": -187000,
+                "profitOrLoss": 187000,
                 "assetsValue": 223452
             }
         ]
     },
     {
-        "id" : 2399,
+        "id" : 2376,
         "sheet" : [
             {
                 "year": 2022,
-                "month": 12,
-                "profitOrLoss": 250000,
+                "month": 5,
+                "profitOrLoss": 200000,
                 "assetsValue": 1234
             },
             {
                 "year": 2022,
-                "month": 11,
+                "month": 6,
                 "profitOrLoss": 1150,
                 "assetsValue": 5789
             },
@@ -54,6 +54,35 @@
                 "month": 9,
                 "profitOrLoss": -387000,
                 "assetsValue": 223452
+            }
+        ]
+    },
+    {
+        "id" : 2377,
+        "sheet" : [
+            {
+                "year": 2022,
+                "month": 8,
+                "profitOrLoss": -200000,
+                "assetsValue": 3456
+            },
+            {
+                "year": 2022,
+                "month": 7,
+                "profitOrLoss": 1150,
+                "assetsValue": 5789
+            },
+            {
+                "year": 2022,
+                "month": 11,
+                "profitOrLoss": 2500,
+                "assetsValue": 22345
+            },
+            {
+                "year": 2022,
+                "month": 9,
+                "profitOrLoss": -323000,
+                "assetsValue": 229452
             }
         ]
     }
