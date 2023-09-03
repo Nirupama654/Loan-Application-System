@@ -24,14 +24,12 @@ Before you proceed, ensure that you have Docker installed on your system.
 
 Docker Build
 1. Clone the repository.
+2. cd loan-application-status
+3. cd client
+4. docker build -t loan-appplication-ui .
+5. cd ../server
+6. docker build -t loan-application-api .
 
 
-bash
-Copy code
-cd loan-application-status
 
-cd client
-docker build -t loan-app-client .
 
-cd ../server
-docker build -t loan-app-server .
