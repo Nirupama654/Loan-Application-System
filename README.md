@@ -16,10 +16,12 @@ Loan Amount : any amount of your choice e.g. 800000
 Select Any accounting provider
 
 
-Dockerization
+# Dockerization
+
 The Loan Application Status System can be containerized using Docker for easier deployment. Below are the steps to run the application in Docker containers.
 
-Prerequisites
+# Prerequisites
+
 Before you proceed, ensure that you have Docker installed on your system.
 
 Docker Build
